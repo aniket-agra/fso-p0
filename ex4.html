@@ -1,0 +1,46 @@
+<html>
+  <body>
+    <p>Exercise 4</p>
+    <pre class="mermaid">
+        sequenceDiagram
+            participant browser
+            participant server
+
+            browser ->> server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+            activate server
+            server -->> browser: Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+            deactivate server
+
+            browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+            activate server
+            server -->> browser: the html file
+            deactivate server
+
+            browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+            activate server
+            server -->> browser: the css file
+            deactivate server
+
+            browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+            activate server
+            server -->> browser: the js file
+            deactivate server
+
+            Note right of browser: browser runs main.js
+
+            browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+            activate server
+            server -->> browser: the data json file
+            deactivate server
+
+            Note right of browser: browser executes callback <br/> to populate HTML with data from json 
+            
+    </pre>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
+
